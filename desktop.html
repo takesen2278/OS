@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap" rel="stylesheet">
+
+<head>
+  <meta charset="UTF-8">
+  
+
+<script>
+window.HUB_EVENTS={ASSET_ADDED:"ASSET_ADDED",ASSET_DELETED:"ASSET_DELETED",ASSET_DESELECTED:"ASSET_DESELECTED",ASSET_SELECTED:"ASSET_SELECTED",ASSET_UPDATED:"ASSET_UPDATED",CONSOLE_CHANGE:"CONSOLE_CHANGE",CONSOLE_CLOSED:"CONSOLE_CLOSED",CONSOLE_EVENT:"CONSOLE_EVENT",CONSOLE_OPENED:"CONSOLE_OPENED",CONSOLE_RUN_COMMAND:"CONSOLE_RUN_COMMAND",CONSOLE_SERVER_CHANGE:"CONSOLE_SERVER_CHANGE",EMBED_ACTIVE_PEN_CHANGE:"EMBED_ACTIVE_PEN_CHANGE",EMBED_ACTIVE_THEME_CHANGE:"EMBED_ACTIVE_THEME_CHANGE",EMBED_ATTRIBUTE_CHANGE:"EMBED_ATTRIBUTE_CHANGE",EMBED_RESHOWN:"EMBED_RESHOWN",FORMAT_FINISH:"FORMAT_FINISH",FORMAT_ERROR:"FORMAT_ERROR",FORMAT_START:"FORMAT_START",IFRAME_PREVIEW_RELOAD_CSS:"IFRAME_PREVIEW_RELOAD_CSS",IFRAME_PREVIEW_URL_CHANGE:"IFRAME_PREVIEW_URL_CHANGE",KEY_PRESS:"KEY_PRESS",LINTER_FINISH:"LINTER_FINISH",LINTER_START:"LINTER_START",PEN_CHANGE_SERVER:"PEN_CHANGE_SERVER",PEN_CHANGE:"PEN_CHANGE",PEN_EDITOR_CLOSE:"PEN_EDITOR_CLOSE",PEN_EDITOR_CODE_FOLD:"PEN_EDITOR_CODE_FOLD",PEN_EDITOR_ERRORS:"PEN_EDITOR_ERRORS",PEN_EDITOR_EXPAND:"PEN_EDITOR_EXPAND",PEN_EDITOR_FOLD_ALL:"PEN_EDITOR_FOLD_ALL",PEN_EDITOR_LOADED:"PEN_EDITOR_LOADED",PEN_EDITOR_REFRESH_REQUEST:"PEN_EDITOR_REFRESH_REQUEST",PEN_EDITOR_RESET_SIZES:"PEN_EDITOR_RESET_SIZES",PEN_EDITOR_SIZES_CHANGE:"PEN_EDITOR_SIZES_CHANGE",PEN_EDITOR_UI_CHANGE_SERVER:"PEN_EDITOR_UI_CHANGE_SERVER",PEN_EDITOR_UI_CHANGE:"PEN_EDITOR_UI_CHANGE",PEN_EDITOR_UI_DISABLE:"PEN_EDITOR_UI_DISABLE",PEN_EDITOR_UI_ENABLE:"PEN_EDITOR_UI_ENABLE",PEN_EDITOR_UNFOLD_ALL:"PEN_EDITOR_UNFOLD_ALL",PEN_ERROR_INFINITE_LOOP:"PEN_ERROR_INFINITE_LOOP",PEN_ERROR_RUNTIME:"PEN_ERROR_RUNTIME",PEN_ERRORS:"PEN_ERRORS",PEN_LIVE_CHANGE:"PEN_LIVE_CHANGE",PEN_LOGS:"PEN_LOGS",PEN_MANIFEST_CHANGE:"PEN_MANIFEST_CHANGE",PEN_MANIFEST_FULL:"PEN_MANIFEST_FULL",PEN_PREVIEW_FINISH:"PEN_PREVIEW_FINISH",PEN_PREVIEW_START:"PEN_PREVIEW_START",PEN_SAVED:"PEN_SAVED",POPUP_CLOSE:"POPUP_CLOSE",POPUP_OPEN:"POPUP_OPEN",POST_CHANGE:"POST_CHANGE",POST_SAVED:"POST_SAVED",PROCESSING_FINISH:"PROCESSING_FINISH",PROCESSING_START:"PROCESSED_STARTED"},"object"!=typeof window.CP&&(window.CP={}),window.CP.PenTimer={programNoLongerBeingMonitored:!1,timeOfFirstCallToShouldStopLoop:0,_loopExits:{},_loopTimers:{},START_MONITORING_AFTER:2e3,STOP_ALL_MONITORING_TIMEOUT:5e3,MAX_TIME_IN_LOOP_WO_EXIT:2200,exitedLoop:function(E){this._loopExits[E]=!0},shouldStopLoop:function(E){if(this.programKilledSoStopMonitoring)return!0;if(this.programNoLongerBeingMonitored)return!1;if(this._loopExits[E])return!1;var _=this._getTime();if(0===this.timeOfFirstCallToShouldStopLoop)return this.timeOfFirstCallToShouldStopLoop=_,!1;var o=_-this.timeOfFirstCallToShouldStopLoop;if(o<this.START_MONITORING_AFTER)return!1;if(o>this.STOP_ALL_MONITORING_TIMEOUT)return this.programNoLongerBeingMonitored=!0,!1;try{this._checkOnInfiniteLoop(E,_)}catch{return this._sendErrorMessageToEditor(),this.programKilledSoStopMonitoring=!0,!0}return!1},_sendErrorMessageToEditor:function(){try{if(this._shouldPostMessage()){var E={topic:HUB_EVENTS.PEN_ERROR_INFINITE_LOOP,data:{line:this._findAroundLineNumber()}};parent.postMessage(E,"*")}else this._throwAnErrorToStopPen()}catch{this._throwAnErrorToStopPen()}},_shouldPostMessage:function(){return document.location.href.match(/boomboom/)},_throwAnErrorToStopPen:function(){throw"We found an infinite loop in your Pen. We've stopped the Pen from running. More details and workarounds at https://blog.codepen.io/2016/06/08/can-adjust-infinite-loop-protection-timing/"},_findAroundLineNumber:function(){var E=new Error("ignored"),_=0;if(E.stack){var o=E.stack.match(/boomboom\S+:(\d+):\d+/);o&&(_=o[1])}return _},_checkOnInfiniteLoop:function(E,_){if(!this._loopTimers[E])return this._loopTimers[E]=_,!1;if(_-this._loopTimers[E]>this.MAX_TIME_IN_LOOP_WO_EXIT)throw"Infinite Loop found on loop: "+E},_getTime:function(){return Date.now()}},window.CP.shouldStopExecution=function(E){var _=window.CP.PenTimer.shouldStopLoop(E);return!0===_&&console.warn("[CodePen]: An infinite loop (or a loop taking too long) was detected, so we stopped its execution. More details at https://blog.codepen.io/2016/06/08/can-adjust-infinite-loop-protection-timing/"),_},window.CP.exitedLoop=function(E){window.CP.PenTimer.exitedLoop(E)};
+<script>
+
+
+<style>
+/* Loading Block */
+#loading {
+  width: 100vw;
+  height: 100vh;
+  transition: all 0.5s;
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+
+  margin: 100px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+
+
+
+/* Hide Loading Block */
+.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+</style>
+
+  <script>
+window.onload = function() {
+  const spinner = document.getElementById('loading');
+ 
+  // Add .loaded to .loading
+  spinner.classList.add('loaded');
+}
+</script>  
+
+
+<div id="loading">
+
+<div class="spinner"></div>
+
+</div>
+
+  
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.adjustable-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 15px;
+  box-shadow: 0px 10px 20px 1px rgba(0, 0, 0, 0.35);
+
+background-color: rgba(255,255,255,0.7);
+
+backdrop-filter: blur(15px);
+
+-webkit-backdrop-filter: blur(15px);
+}
+
+
+
+
+
+.adjustable-modal:focus, .adjustable-modal:focus-within {
+  z-index: 11;
+  outline: 0;
+}
+.adjustable-modal__content {
+  border-top: solid 1px #ddd;
+  flex: 1 1 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.adjustable-modal__resize-top-bar {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  left: 5px;
+  height: 5px;
+  cursor: ns-resize;
+}
+.adjustable-modal__resize-bottom-bar {
+  position: absolute;
+  right: 5px;
+  bottom: 0;
+  left: 5px;
+  height: 5px;
+  cursor: ns-resize;
+}
+.adjustable-modal__resize-left-bar {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 0;
+  width: 5px;
+  cursor: ew-resize;
+}
+.adjustable-modal__resize-right-bar {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  bottom: 5px;
+  width: 5px;
+  cursor: ew-resize;
+}
+.adjustable-modal__resize-top-left-corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  cursor: nwse-resize;
+}
+.adjustable-modal__resize-top-right-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 5px;
+  cursor: nesw-resize;
+}
+.adjustable-modal__resize-bottom-right-corner {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 5px;
+  height: 5px;
+  cursor: nwse-resize;
+}
+.adjustable-modal__resize-bottom-left-corner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  cursor: nesw-resize;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px 10px 20px;
+  cursor: grab;
+}
+.header:active {
+  cursor: grabbing;
+}
+.header__title {
+  font-size: 18px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.header__close {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
+.header__close:hover {
+Background-color: f00;
+Border-radius: 10px
+}
+
+
+.header__close::before, .header__close::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 2px;
+  background-color: #838383;
+  content: "";
+}
+.header__close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.header__close::after {
+  transform: translate(-50%, -50%) rotate(135deg);
+}
+
+iframe {
+  border:none;
+  width: calc(100%);
+  height: calc(100%);
+  border-radius: 0px 0px 15px 15px;
+}
+
+Body{
+font-family: "Zen Kaku Gothic Antique", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  width: 100%;
+  height: 100vh;
+background-image: url(Wallpaper-light.png);    /* 背景画像指定 */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  Padding: 10px;
+
+display: flex;
+    justify-content: center;
+    align-items: center;
+
+background-color: rgba(255,255,255,0.7);
+-webkit-backdrop-filter: blur(15px);
+backdrop-filter: blur(15px);
+
+animation-name:fadeUpAnime;
+animation-duration:0.5s;
+animation-fill-mode:forwards;
+opacity:0;
+
+
+
+}
+
+Button{
+Background-color: #00000000;
+border-style: none;
+Padding: 10px 10px 5px 10px ;
+margin: 0px 5px 0px 5px;
+}
+
+Button:disabled {
+  background-color: #00000020;
+  border-radius: 10px;
+}
+
+
+.animation{
+
+backdrop-filter: blur(15px);
+
+animation-name:fadeUpAnime;
+animation-duration:1s;
+animation-fill-mode:forwards;
+opacity:0;
+
+}
+
+@keyframes fadeUpAnime{
+  from {
+    opacity: 0;
+  transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+  transform: translateY(0);
+  }
+}
+
+Button:disabled {
+  background-color: #00000010;
+  border-radius: 10px;
+}
+.left1{
+  position: fixed;
+  bottom: 17px;/*自分が固定したい位置(例は上から0pxの位置)*/
+  Right: 20px;/*自分が固定したい位置(例は左から10pxの位置)*/
+Background-color:#ffffff26;
+Padding: 5px 5px 1px 5px;
+  border-radius: 15px;
+}
+Span{color:#000;}
+
+
+.btnripple{
+    /*波紋の基点とするためrelativeを指定*/
+  position: relative;
+    /*はみ出す波紋を隠す*/
+  overflow: hidden;
+    /*ボタンの形状*/
+    text-decoration: none;
+  display:inline-block;
+  color: #fff;
+  padding: 5px 7px;
+  border-radius: 10px;
+    outline: none;
+}
+
+.btnripple::after {
+    content: "";
+    /*絶対配置で波紋位置を決める*/
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /*波紋の形状*/
+    background: radial-gradient(circle, #000 10%, transparent 10%) no-repeat 50%;
+    transform: scale(10, 10);
+    /*はじめは透過0に*/
+    opacity: 0;
+    /*アニメーションの設定*/
+    transition: transform 0.3s, opacity 1s;
+}
+
+/*クリックされたあとの形状の設定*/
+    .btnripple:active::after {
+    transform: scale(0, 0);
+    transition: 0s;
+    opacity: 0.3;
+}
+
+
+</style>
+
+
+
+
+<style>
+@media (prefers-color-scheme: dark) {
+Span{color:#fff}
+
+.adjustable-modal{
+background-color: rgba(0,0,0,0.7);
+color: #ffffff;
+
+}
+
+Body{
+background-image: url(Wallpaper-dark.png);    /* 背景画像指定 */
+}
+
+
+
+Footer{
+background-color: rgba(0,0,0,0.7);
+}
+
+Button:disabled {
+  background-color: #ffffff20;
+  border-radius: 10px;
+}
+
+.btnripple::after{
+  background: radial-gradient(circle, #fff 10%, transparent 10%) no-repeat 50%;
+}
+</style>
+
+
+
+
+
+
+  
+</head>
+
+<body translate="no">
+  <div id="app"></div>
+<script id="adjustable-modal" type="text/x-template">
+  <div class="adjustable-modal" v-show="$props.isOpen" ref="elModal" :style="{      width: `${$data.width}px`,      height: `${$data.height}px`,      transform: `translate3d(${$data.pos.x}px, ${$data.pos.y}px, 0)`,    }" tabindex="0">
+    <div class="adjustable-modal__header" @mousedown="onMoveDragStart">
+      <div class="header">
+        <div class="header__title">{{ $props.title }}</div>
+        <div class="header__close" @click="$emit('close')"></div>
+      </div>
+    </div>
+    <div class="adjustable-modal__content">
+      <slot></slot>
+    </div>
+    <div class="adjustable-modal__resize-top-left-corner" @mousedown="(event) =&gt; { onResizeDragStart(event, 'left', 'top'); }"></div>
+    <div class="adjustable-modal__resize-top-bar" @mousedown="(event) =&gt; { onResizeDragStart(event, null, 'top'); }"></div>
+    <div class="adjustable-modal__resize-top-right-corner" @mousedown="(event) =&gt; { onResizeDragStart(event, 'right', 'top'); }"></div>
+    <div class="adjustable-modal__resize-right-bar" @mousedown="(event) =&gt; { onResizeDragStart(event, 'right', null); }"></div>
+    <div class="adjustable-modal__resize-bottom-right-corner" @mousedown="(event) =&gt; { onResizeDragStart(event, 'right', 'bottom'); }"></div>
+    <div class="adjustable-modal__resize-bottom-bar" @mousedown="(event) =&gt; { onResizeDragStart(event, null, 'bottom'); }"></div>
+    <div class="adjustable-modal__resize-bottom-left-corner" @mousedown="(event) =&gt; { onResizeDragStart(event, 'left', 'bottom'); }"></div>
+    <div class="adjustable-modal__resize-left-bar" @mousedown="(event) =&gt; { onResizeDragStart(event, 'left', null); }"></div>
+  </div>
+</script>
+
+
+<script>
+</script>
+
+
+<script>
+		window.addEventListener('load', function(){
+			
+			// フルスクリーン表示
+			document.getElementById('button1').addEventListener('click', function(){
+				document.body.requestFullscreen();				
+			});
+
+			// フルスクリーン解除
+			document.getElementById('button2').addEventListener('click', function(){
+				document.exitFullscreen();
+			});
+		});
+	</script>
+<button id="button1">フルスクリーン表示</button>
+<button id="button2">解除</button>
+
+
+
+
+
+<style>
+@charset "utf-8";
+
+/* クリックしたら波紋が広がる */
+
+
+</style>
+
+
+
+
+
+<script id="vue-app" type="text/x-template">
+
+  <div>
+    <div>
+
+
+  <footer>
+
+
+<button class="btnripple" :disabled="$data.isOpen1" @click="$data.isOpen1 = true">
+<img src="icon/test.png" alt="button" width="30" height="30" />
+</button>
+
+
+
+  <button class="btnripple" :disabled="$data.isOpen2" @click="$data.isOpen2 = true">
+<img src="icon/note.png" alt="button" width="30" height="30" />
+</button>
+
+
+
+      <button class="btnripple" :disabled="$data.isOpen3" @click="$data.isOpen3 = true">
+<img src="icon/setting.png" alt="button" width="30" height="30" />
+</button>
+
+      <button class="btnripple" :disabled="$data.isOpen4" @click="$data.isOpen4 = true">
+<img src="icon/browser.png" alt="button" width="30" height="30" />
+</button>
+
+      <button class="btnripple" :disabled="$data.isOpen5" @click="$data.isOpen5 = true">
+<img src="icon/v-desktop.png" alt="button" width="30" height="30" />
+</button>
+
+
+
+
+
+
+<div class="left1">
+<a onclick="window.location.reload(true);">
+	<i class="fa fa-refresh" aria-hidden="true"></i><span class="material-symbols-outlined">
+restart_alt
+</span>
+</a>
+</div>
+
+
+
+
+
+  </footer>
+
+
+    </div>
+    <AdjustableModal title="テスト用アプリ" :initialWidth="500" :initialHeight="500" :isOpen="$data.isOpen1" @close="$data.isOpen1 = false">
+     
+
+
+ <iframe loading="lazy" src="apps/test2.html"></iframe>
+
+
+    </AdjustableModal>
+    <AdjustableModal title="ノート" :initialWidth="400" :initialHeight="400" :isOpen="$data.isOpen2" @close="$data.isOpen2 = false">
+      
+
+<iframe loading="lazy" src="apps/note.html"></iframe>
+
+    </AdjustableModal>
+    <AdjustableModal title="システム情報" :initialWidth="500" :initialHeight="500" :isOpen="$data.isOpen3" @close="$data.isOpen3 = false">
+
+
+
+ <iframe loading="lazy" src="apps/setting.html"></iframe>
+
+
+    </AdjustableModal>
+
+
+<div class="animation">
+
+    <AdjustableModal title="ブラウザ" :initialWidth="600" :initialHeight="600" :isOpen="$data.isOpen4" @close="$data.isOpen4 = false">
+ <iframe loading="lazy" src="apps/browser.html"></iframe>
+
+
+    </AdjustableModal>
+
+
+<div class="animation">
+
+    <AdjustableModal title="仮想環境" :initialWidth="600" :initialHeight="600" :isOpen="$data.isOpen5" @close="$data.isOpen5 = false">
+ <iframe loading="lazy" src="apps/仮想環境.html"></iframe>
+
+
+</div>
+
+</script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js'></script>
+      <script id="rendered-js" >
+const MIN_HEIGHT = 200;
+const MIN_WIDTH = 200;
+
+Vue.component('AdjustableModal', {
+  template: '#adjustable-modal',
+  props: {
+    isOpen: { type: Boolean },
+    title: { type: String },
+    initialWidth: { type: Number },
+    initialHeight: { type: Number } },
+
+  data() {
+    return {
+      width: this.$props.initialWidth,
+      height: this.$props.initialHeight,
+      pos: {
+        x: (window.innerWidth - this.$props.initialWidth) / 2,
+        y: (window.innerHeight - this.$props.initialHeight) / 2 },
+
+      isMoveDragging: false,
+      resizeDraggingSide: null,
+      resizeDraggingVertical: null };
+
+  },
+  mounted() {
+    document.addEventListener('mousemove', this.onDrag);
+    document.addEventListener('mouseup', this.onDragEnd);
+  },
+  beforeDestroy() {
+    document.removeEventListener('mousemove', this.onDrag);
+    document.removeEventListener('mouseup', this.onDragEnd);
+  },
+  methods: {
+    /**
+     * 移動ドラッグ開始時
+     * @param {Event} event - イベント
+     */
+    onMoveDragStart(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      // イベントはブロックしてしまうので明示的にfocusする
+      this.$refs.elModal.focus();
+
+      this.$data.isMoveDragging = true;
+      this.dragStartX = event.clientX;
+      this.dragStartY = event.clientY;
+      this.startClientRect = {
+        x: this.$data.pos.x,
+        y: this.$data.pos.y,
+        width: this.$data.width,
+        height: this.$data.height };
+
+    },
+    /**
+     * リサイズドラッグ開始時
+     * @param {Event} event - イベント
+     * @param {'left' | 'right' | null} resizeDraggingSide - 水平方向のリサイズ対象
+     * @param {'top' | 'bottom' | null} resizeDraggingVertical - 垂直方向のリサイズ対象
+     */
+    onResizeDragStart(event, resizeDraggingSide, resizeDraggingVertical) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.$data.resizeDraggingSide = resizeDraggingSide;
+      this.$data.resizeDraggingVertical = resizeDraggingVertical;
+      this.dragStartX = event.clientX;
+      this.dragStartY = event.clientY;
+      this.startClientRect = {
+        x: this.$data.pos.x,
+        y: this.$data.pos.y,
+        width: this.$data.width,
+        height: this.$data.height };
+
+    },
+    /**
+     * ドラッグ中
+     * @param {Event} event - イベント
+     */
+    onDrag(event) {
+      if (this.dragStartX == null || this.dragStartY == null || this.startClientRect == null) {
+        return;
+      }
+
+      // 移動ドラッグの時
+      if (this.$data.isMoveDragging) {
+        this.$data.pos.x = _.clamp(
+        this.startClientRect.x + (event.clientX - this.dragStartX),
+        0,
+        window.innerWidth - this.$data.width);
+
+        this.$data.pos.y = _.clamp(
+        this.startClientRect.y + (event.clientY - this.dragStartY),
+        0,
+        window.innerHeight - this.$data.height);
+
+      }
+
+      // topのリサイズドラッグの時
+      if (this.$data.resizeDraggingVertical === 'top') {
+        const changeValue = event.clientY - this.dragStartY;
+        const bottomY = this.startClientRect.y + this.startClientRect.height;
+        this.$data.pos.y = _.clamp(this.startClientRect.y + changeValue, 0, bottomY - MIN_HEIGHT);
+        this.$data.height = bottomY - this.$data.pos.y;
+      }
+
+      // bottomのリサイズドラッグの時
+      if (this.$data.resizeDraggingVertical === 'bottom') {
+        const changeValue = event.clientY - this.dragStartY;
+        this.$data.height = _.clamp(
+        this.startClientRect.height + changeValue,
+        MIN_HEIGHT,
+        window.innerHeight - this.startClientRect.y);
+
+      }
+
+      // leftのリサイズドラッグの時
+      if (this.$data.resizeDraggingSide === 'left') {
+        const changeValue = event.clientX - this.dragStartX;
+        const rightX = this.startClientRect.x + this.startClientRect.width;
+        this.$data.pos.x = _.clamp(this.startClientRect.x + changeValue, 0, rightX - MIN_WIDTH);
+        this.$data.width = rightX - this.$data.pos.x;
+      }
+
+      // rightのリサイズドラッグの時
+      if (this.$data.resizeDraggingSide === 'right') {
+        const changeValue = event.clientX - this.dragStartX;
+        this.$data.width = _.clamp(
+        this.startClientRect.width + changeValue,
+        MIN_WIDTH,
+        window.innerWidth - this.startClientRect.x);
+
+      }
+    },
+    /**
+     * ドラッグ終了時
+     */
+    onDragEnd() {
+      this.$data.isMoveDragging = false;
+      this.$data.resizeDraggingSide = null;
+      this.$data.resizeDraggingVertical = null;
+      this.dragStartX = null;
+      this.dragStartY = null;
+      this.startClientRect = null;
+    } } });
+
+
+
+new Vue({
+  el: '#app',
+  template: '#vue-app',
+  data() {
+    return {
+      isOpen1: false,
+      isOpen2: false,
+      isOpen3: false,
+      isOpen5: false,
+      isOpen4: false };
+
+  } });
+//# sourceURL=pen.js
+    </script>
+
+  
+</body>
+
+</html>
